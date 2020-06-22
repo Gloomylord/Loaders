@@ -1,0 +1,44 @@
+.container {
+    grid-area: loadershadow;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #d06c67;
+    grid-column: span 2;
+}
+
+.loader {
+    position: relative;
+    display: flex;
+}
+
+.loader div {
+    width: 2vw;
+    height: 20vh;
+    margin: 0 1vw;
+    background: #d06c67;
+    animation: animate 1.4s linear infinite;
+    animation-delay: calc(0.2s * var(--i));
+}
+
+@keyframes animate {
+    0%{
+        box-shadow: 0 0 0 rgba(0,0,0,.5);
+        opacity: 0;
+        transform: scaleY(0);
+    }
+    50%{
+        box-shadow: 0 10px 40px rgba(0,0,0,.5);
+        opacity: 1;
+        transform: scaleY(1);
+    }
+    100%{
+        box-shadow: 0 0 0 rgba(0,0,0,.5);
+        opacity: 0;
+        transform: scaleY(0);
+    }
+}
+
+

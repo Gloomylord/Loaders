@@ -1,38 +1,126 @@
-.App {
-  text-align: center;
+.main {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-template-areas: "loader3d loadershadow loadershadow f"
+    "loader3d rotateloader liquidloader f"
+    "g g h h";
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.main:hover * {
+    animation-play-state: paused;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.main:hover ::before {
+    animation-play-state: paused !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.main > div:hover *{
+    animation-play-state: running;
 }
 
-.App-link {
-  color: #61dafb;
+.main > div:hover ::before{
+    animation-play-state: running !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.main > div {
+    border: 2px solid #b3abd2;
+    position: relative;
 }
+
+.main:hover div .container_block {
+    opacity: 1;
+}
+
+.main > div:hover .container_block{
+    opacity: 0;
+}
+
+
+
+.main :nth-child(4) {
+    grid-area: f;
+}
+
+.main :nth-child(5) {
+    grid-area: g;
+}
+
+.main :nth-child(6) {
+    grid-area: h;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.bg_container{
+    background: #143d50;
+    padding: 10px 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container_block {
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.49);
+    opacity: 0;
+    transition: opacity .2s;
+}
+
+
+@media (max-width: 1300px) {
+    .main {
+        grid-template-areas: "loader3d loadershadow loadershadow "
+        "loader3d rotateloader  f"
+        "h h f" "liquidloader  g g ";
+        grid-template-columns: repeat(3, minmax(250px,1fr));
+        grid-template-rows: repeat(4, 300px);
+    }
+}
+
+@media (max-width: 970px) {
+    .main {
+        grid-template-areas: "loadershadow loadershadow "
+        "loader3d  liquidloader"
+        "loader3d  f"
+        "rotateloader f"
+        "g g  "
+        " h h ";
+        grid-template-columns: repeat(2, minmax(250px,1fr));
+        grid-template-rows: repeat(6, 300px);
+    }
+}
+
+@media (max-width: 600px) {
+    .main {
+        grid-template-areas: "loadershadow"
+        "loader3d"
+        "loader3d"
+        "rotateloader"
+        "liquidloader"
+        "g"
+        "h"
+        "f"
+        "f";
+        grid-template-columns: repeat(1, minmax(250px,1fr));
+        grid-template-rows: repeat(9, 300px);
+    }
+}
+
+
+
+
+

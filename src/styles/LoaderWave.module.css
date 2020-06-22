@@ -1,0 +1,50 @@
+.main {
+    grid-area: loader3d;
+    overflow: hidden;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(rgb(42, 255, 106),rgba(0,129,232,0));
+}
+
+.container {
+    padding: 0;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    width: 50%;
+    border-radius: 50%;
+    transform-style: preserve-3d;
+    transform: perspective(1000px) rotateX(45deg);
+}
+
+.loader {
+    position: absolute;
+    display: block;
+    border: 2px solid #fff;
+    box-sizing: border-box;
+    border-radius: 50%;
+    animation: loader 4.5s ease-in-out infinite;
+    transform: translateZ(500px);
+    animation-delay: calc(0.2s * var(--i));
+    height: calc(5% * var(--i));
+    width: calc(5% * var(--i));
+}
+
+@keyframes loader {
+    0% {
+        transform: translateZ(-100px);
+    }
+
+    50% {
+        transform: translateZ(100px);
+    }
+
+    100% {
+        transform: translateZ(-100px);
+    }
+
+}
